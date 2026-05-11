@@ -29,7 +29,10 @@ git clone https://github.com/Foreverweiwei2020/yys168cloud-.git /Applications/MA
 
 ---
 - [x] 已完成的事
+- [x] 哈哈
 - [ ] 待做的事
+- [ ] 哈哈哈
+- [ ] 哈哈
 ---
 ```html
 <!DOCTYPE html>
