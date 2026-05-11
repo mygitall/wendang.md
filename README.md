@@ -20,3 +20,4 @@
 ```
 git clone https://github.com/Foreverweiwei2020/yys168cloud-.git /Applications/MAMP/htdocs
 ```
+[点我去百度](https://www.baidu.com)
