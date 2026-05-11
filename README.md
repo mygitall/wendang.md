@@ -46,18 +46,3 @@ git clone https://github.com/Foreverweiwei2020/yys168cloud-.git /Applications/MA
 
 
 
----
-
-### 2. CSS 写法
-```markdown
-```css
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-}
-
-h1 {
-    color: #333;
-}
