@@ -16,7 +16,10 @@
 └── data/
     └── backups/        # 数据库备份目录
 ```
-
+## claude 命令
+  、、、开通claude最高权限
+   claude --dangerously-skip-permissions
+  、、、
 ### git拉取
 ```
  git clone https://github.com/mygitall/yys168cloud-.git \
