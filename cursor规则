@@ -1,0 +1,270 @@
+# Cursor 前端自动化工作流：一条指令，全自动生成页面
+
+> **目标**：配置完成后，你只需要说"帮我做一个首页"，AI 自动应用深色主题、玻璃卡片、Tailwind CSS、响应式布局，生成可直接运行的代码。
+
+---
+
+## 1️⃣ 第一步：配置 Cursor 全局规则（全局生效）
+
+### 作用
+
+控制 AI 的基础行为：使用中文、输出整洁代码、遵循现代前端规范、不添加多余解释。
+
+### 配置路径
+
+1. 打开 Cursor
+2. 点击右上角 **Settings（设置）**
+3. 找到 **Cursor AI → Global Rules（全局规则）**
+4. 粘贴以下内容：
+
+```text
+# Cursor 全局规则
+1. 所有回答使用简体中文
+2. 代码输出整洁、可直接运行、无冗余内容
+3. 前端开发默认使用 Tailwind CSS
+4. 输出代码必须包含响应式适配
+5. 不解释废话，只输出核心结果与代码
+6. 自动遵循项目内的 .cursorrules 与 .mdc 规范
+7. 生成 HTML 时自动引入 Tailwind CDN
+```
+
+### 完成效果
+
+AI 全局行为统一，永远使用中文、输出干净代码、默认支持 Tailwind。
+
+---
+
+## 2️⃣ 第二步：配置项目 UI 设计规范（`apple-linear-vercel-ui.mdc`）
+
+### 作用
+
+定义你的专属设计系统：深色主题、玻璃卡片、配色、字体、圆角、间距、布局。
+
+### 文件位置
+
+项目根目录，文件名：`apple-linear-vercel-ui.mdc`
+
+### 完整内容（直接复制）
+
+```text
+# Apple / Linear / Vercel 风格设计规范
+
+## 主题风格
+- 主风格：极简高级风
+- 主题：深色主题（#0F1117 背景）
+- 卡片风格：玻璃拟态 / 毛玻璃效果
+- 边框：细、柔和、半透明白色
+- 阴影：极淡、高级、通透
+
+## 颜色规范
+- 主背景：#0F1117
+- 卡片背景：rgba(255,255,255,0.05)
+- 边框色：rgba(255,255,255,0.12)
+- 主色调（蓝）：#3B82F6
+- 文字标题：#FFFFFF
+- 文字正文：#D1D5DB
+- 文字次要：#9CA3AF
+
+## 字体
+- 字体：Inter, -apple-system, BlinkMacSystemFont, sans-serif
+- 字重：标题 600 / 正文 400
+
+## 圆角规范
+- 卡片圆角：10px
+- 按钮圆角：6px
+- 输入框圆角：6px
+
+## 布局规范
+- 采用 Bento Grid 现代网格布局
+- 留白充足、呼吸感强
+- 所有模块间距统一
+- 响应式适配手机/平板/桌面
+
+## 组件风格
+- 按钮：主色填充、文字白、hover 轻微变暗
+- 卡片：半透背景+细边框+柔和阴影
+- 表单：输入框半透、边框细、聚焦高亮
+- 导航栏：滚动时背景变深、毛玻璃效果
+```
+
+### 完成效果
+
+AI 永远知道你要什么风格，不会跑偏。
+
+---
+
+## 3️⃣ 第三步：配置 Tailwind CSS 样式体系（真正生效关键）
+
+包含两个部分：
+
+| 文件 | 作用 |
+|------|------|
+| `tailwind.config.js` | 项目构建配置 |
+| HTML 内嵌配置 | 页面运行时通过 CDN 生效 |
+
+### 3.1 配置 `tailwind.config.js`
+
+**文件位置**：项目根目录，文件名：`tailwind.config.js`
+
+**完整内容**：
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./**/*.{html,js}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: "#3B82F6",
+        darkBg: "#0F1117",
+        card: "rgba(255, 255, 255, 0.05)",
+        borderLine: "rgba(255, 255, 255, 0.12)",
+        text: {
+          title: "#FFFFFF",
+          base: "#D1D5DB",
+          minor: "#9CA3AF",
+        },
+      },
+      fontFamily: {
+        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+      },
+      borderRadius: {
+        card: "10px",
+        button: "6px",
+      },
+    },
+  },
+  plugins: [],
+};
+```
+
+### 3.2 HTML 自动引入配置（AI 自动生成）
+
+所有 HTML 文件，AI 会自动在 `<head>` 中插入：
+
+```html
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#3B82F6",
+        darkBg: "#0F1117",
+        card: "rgba(255,255,255,0.05)",
+        borderLine: "rgba(255,255,255,0.12)",
+        text: { title:"#FFF", base:"#D1D5DB", minor:"#9CA3AF" }
+      },
+      fontFamily: {
+        sans: ["Inter","-apple-system","BlinkMacSystemFont","sans-serif"]
+      },
+      borderRadius: {
+        card: "10px",
+        button: "6px"
+      }
+    }
+  }
+}
+</script>
+```
+
+### 完成效果
+
+你的自定义样式类名永久生效：
+
+| 类名 | 效果 |
+|------|------|
+| `bg-darkBg` | 深色背景 |
+| `bg-card` | 玻璃卡片 |
+| `bg-primary` | 主按钮蓝色 |
+| `rounded-card` | 卡片圆角 |
+| `text-title` / `text-base` | 自动文字层级 |
+
+---
+
+## 4️⃣ 第四步：配置 `.cursorrules`（AI 全自动执行所有规范）
+
+### 作用
+
+最核心的自动化文件。一句话不说，AI 也会：
+
+- 自动用 Tailwind
+- 自动用深色主题
+- 自动用玻璃卡片
+- 自动应用你的配色
+- 自动生成可直接运行的代码
+
+### 文件位置
+
+项目根目录，文件名：`.cursorrules`（无后缀、无前缀、前面必须带点）
+
+### 完整内容
+
+```text
+# HTML 自动构建规范（全自动生效）
+1. 所有页面必须使用 Tailwind CSS 构建
+2. 自动在 HTML 头部引入 Tailwind CDN
+3. 自动应用项目自定义 Tailwind 配置
+4. 严格遵循 apple-linear-vercel-ui.mdc 设计规范
+5. 自动使用深色主题 + 玻璃卡片风格
+6. 自动使用项目自定义类名：bg-darkBg、bg-card、borderLine、rounded-card、rounded-button
+7. 页面必须响应式适配手机/平板/桌面
+8. 所有交互组件必须包含 hover / focus 效果
+9. 代码结构完整、可直接运行、无错误
+10. 布局使用 Bento Grid，留白充足
+```
+
+### 完成效果
+
+你只需要说：**帮我做一个个人中心页面**，AI 就会全自动生成符合你所有规范的网页。
+
+---
+
+## 三、最终项目目录结构（GitHub 标准）
+
+```plaintext
+你的项目/
+├── .cursorrules                  # AI 自动执行规则（核心）
+├── apple-linear-vercel-ui.mdc    # UI 设计规范
+├── tailwind.config.js            # Tailwind 配置
+├── index.html                    # 你的页面
+└── README.md                     # 本教程
+```
+
+---
+
+## 四、使用方法（最终极简单）
+
+你以后只需要这样说：
+
+```plaintext
+帮我做一个首页
+帮我做一个登录页
+帮我做一个个人中心
+帮我做一个后台管理页面
+```
+
+AI 自动为你：
+
+- ✅ 自动使用 Tailwind
+- ✅ 自动应用深色主题
+- ✅ 自动玻璃卡片
+- ✅ 自动你的配色 / 圆角 / 字体
+- ✅ 自动响应式
+- ✅ 自动可直接运行
+- ✅ 你一句话都不用多讲
+
+---
+
+## 五、注意事项（必须看）
+
+- 所有文件必须放在**项目根目录**
+- 文件名**不能改**
+- `.cursorrules` 前面**必须带 `.`**
+- 生成页面后，浏览器刷新使用 **Cmd + Shift + R**
+- 想改风格 → 直接修改 `.mdc` / `.cursorrules` / `tailwind.config.js`
+
+---
+
+> 🎉 **完成！** 这是目前 Cursor 最完整、最强大、最自动化的前端工作流，可以直接放到你的 GitHub README.md 中！
