@@ -19,7 +19,8 @@
 
 ### git拉取
 ```
-sudo git clone git@github.com:mygitall/yys168cloud-.git/Applications/MAMP/htdocs/
+ git clone https://github.com/mygitall/yys168cloud-.git \
+    /Applications/MAMP/htdocs/yys168cloud-
 ```
 [点我去百度](https://www.baidu.com)
 
