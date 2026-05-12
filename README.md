@@ -17,7 +17,7 @@
     └── backups/        # 数据库备份目录
 ```
 
-## git拉取
+### git拉取
 ```
 git clone https://github.com/Foreverweiwei2020/yys168cloud-.git /Applications/MAMP/htdocs
 ```
