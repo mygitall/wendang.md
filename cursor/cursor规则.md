@@ -9,6 +9,7 @@
 ```
 rules,skills,subagents 
 ```
+```
 # HTML 自动构建规范（全自动生效）
 1. 所有页面必须使用 Tailwind CSS 构建
 2. 自动在 HTML 头部引入 Tailwind CDN
@@ -20,3 +21,4 @@ rules,skills,subagents
 8. 所有交互组件必须包含 hover / focus 效果
 9. 代码结构完整、可直接运行、无错误
 10. 布局使用 Bento Grid，留白充足
+```
