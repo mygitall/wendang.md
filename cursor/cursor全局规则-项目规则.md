@@ -23,7 +23,7 @@ rules,skills,subagents
 9. 代码结构完整、可直接运行、无错误
 10. 布局使用 Bento Grid，留白充足
 ```
-###### .mdc
+###### .mdc 项目根目录建立-.cursor>rules>***.mdc
 ```
 ---
 description: STRICT UI SYSTEM - Vercel + Linear + Apple constrained minimal design system
