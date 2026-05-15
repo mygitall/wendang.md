@@ -1,7 +1,0 @@
-
-## claude 命令
- 1、 开通claude最高权限
- ```
-  
-   claude --dangerously-skip-permissions
-  ```
