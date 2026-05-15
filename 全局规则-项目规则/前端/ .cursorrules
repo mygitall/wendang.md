@@ -1,0 +1,6 @@
+【HTML 页面开发规范】
+所有网页必须使用 Tailwind CSS 构建
+自动引入 Tailwind CDN 并应用项目配置
+自动遵循项目设计规范：深色主题、玻璃卡片、统一配色、字体和圆角
+优先使用项目定义的 Tailwind 自定义类名（如 bg-darkBg、bg-primary、rounded-card 等）
+确保响应式适配和基础交互效果，代码完整可直接运行
